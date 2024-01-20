@@ -1,9 +1,7 @@
 using UnityEngine;
-
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,13 +11,30 @@ public class PlayerScript : MonoBehaviour
     float mouseButtonHoldTime = 0.0f;
     bool mouseButtonHeld = false;
 
-    // Start is called before the first frame update
+    //When Player Press Down MB0
+    private float originalTimeScale = 1f;
+
     void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            ApplyBlackAndWhiteEffect(true);
+            Time.timeScale = 0.5f; // 减缓时间
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            ApplyBlackAndWhiteEffect(false);
+            Time.timeScale = originalTimeScale; // 恢复时间
+        }
+    }
+
+
     void FixedUpdate()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -33,13 +48,12 @@ public class PlayerScript : MonoBehaviour
 
         //New: tracks to mouse
 
-
         Vector3 playerPosition = transform.position;
         Vector3 playerToMouse;
 
         playerToMouse = mousePos - playerPosition;
 
-
+        
         //Caps
         if (Input.GetMouseButton(0))
         {
@@ -62,6 +76,18 @@ public class PlayerScript : MonoBehaviour
                 playerBody.AddForce(playerToMouse.normalized * flingStrength * mouseButtonHoldTime, ForceMode2D.Impulse);
                 mouseButtonHoldTime = 0f;
             }
+        }
+    }
+
+    void ApplyBlackAndWhiteEffect(bool apply)
+    {
+        if (apply)
+        {
+            
+        }
+        else
+        {
+
         }
     }
 }
