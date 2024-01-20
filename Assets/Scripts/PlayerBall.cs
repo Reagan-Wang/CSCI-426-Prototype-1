@@ -13,9 +13,20 @@ public class PlayerScript : MonoBehaviour
     public GameObject CameraGet;
     Rigidbody2D playerBody;
 
+    //Makes the mouse work
     float mouseButtonHoldTime = 0.0f;
     bool mouseButtonHeld = false;
+
+    //Gamefeel variables
     public float screenShakeIntensity = 0.1f;
+    public float minimumStrength = 0.5f;
+    public float chargeSpeed = 2f;
+    public float hitStopCutoff = 1f;
+
+    //Audio
+    AudioSource playerAudioSource;
+    bool m_Play;
+    public float velocityMaxVolumeCutoff = 20f;
 
     //When Player Press Down MB0
     public Volume volume;
@@ -28,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
+        playerAudioSource = GetComponent<AudioSource>();
 
         CameraGet = GameObject.FindGameObjectWithTag("MainCamera");
 
@@ -88,12 +100,12 @@ public class PlayerScript : MonoBehaviour
         {
 
             //Debug.Log("mouse button held down");
-            mouseButtonHoldTime += Time.deltaTime;
+            mouseButtonHoldTime += Time.deltaTime * chargeSpeed;
 
-            /*if (mouseButtonHoldTime > 3f) //Caps the strength so we don't get insanely wacky shit with forces of like, a bajillion.
+            if (mouseButtonHoldTime > 3f) //Caps the strength so we don't get insanely wacky shit with forces of like, a bajillion.
             {
                 mouseButtonHoldTime = 3f;
-            }*/
+            }
 
             mouseButtonHeld = true;
         }
@@ -103,11 +115,7 @@ public class PlayerScript : MonoBehaviour
             {
                 mouseButtonHeld = false;
 
-
-                Debug.Log("Ball still exists");
-                Debug.Log("mouseButtonHoldTime: " + mouseButtonHoldTime);
-
-                playerBody.AddForce(playerToMouse.normalized * flingStrength * mouseButtonHoldTime,
+                playerBody.AddForce(playerToMouse.normalized * flingStrength * (mouseButtonHoldTime + minimumStrength),
                     ForceMode2D.Impulse);
                 mouseButtonHoldTime = 0f;
             }
@@ -156,10 +164,12 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        playerAudioSource.volume = playerBody.velocity.magnitude / velocityMaxVolumeCutoff;
+        playerAudioSource.pitch = velocityMaxVolumeCutoff / playerBody.velocity.magnitude;
+        playerAudioSource.Play();
+
+        if (playerBody.velocity.magnitude > hitStopCutoff)
         {
-            Time.timeScale = 1.0f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
             CameraGet.GetComponent<ShakeBehaviour>().shakeDuration = 0.2f * playerBody.velocity.magnitude * screenShakeIntensity;
         }
     }
