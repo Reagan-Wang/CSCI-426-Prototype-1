@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -12,28 +14,50 @@ public class PlayerScript : MonoBehaviour
     bool mouseButtonHeld = false;
 
     //When Player Press Down MB0
-    private float originalTimeScale = 1f;
+    public Volume volume;
+    private ColorAdjustments colorAdjustments;
+    private Coroutine colorCoroutine;
+    public float changeSpeed = 500;
+    public GameObject pointer;
+
 
     void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
+
+        //When Player Press Down MB0
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
+        {
+            colorAdjustments.saturation.value = 100f;
+        }
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            pointer.SetActive(true);
             ApplyBlackAndWhiteEffect(true);
-            Time.timeScale = 0.5f; // 减缓时间
+            Time.timeScale = 0.2f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            mouseButtonHoldTime = 0.0f;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButton(0))
+        {
+            PointToMouse();
+            ScalePointer();
+            mouseButtonHoldTime += Time.deltaTime;
+        }
+        
+    if (Input.GetMouseButtonUp(0))
         {
             ApplyBlackAndWhiteEffect(false);
-            Time.timeScale = originalTimeScale; // 恢复时间
+            Time.timeScale = 1.0f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            pointer.SetActive(false);
         }
     }
-
 
     void FixedUpdate()
     {
@@ -53,7 +77,7 @@ public class PlayerScript : MonoBehaviour
 
         playerToMouse = mousePos - playerPosition;
 
-        
+
         //Caps
         if (Input.GetMouseButton(0))
         {
@@ -61,7 +85,8 @@ public class PlayerScript : MonoBehaviour
             //Debug.Log("mouse button held down");
             mouseButtonHoldTime += Time.deltaTime;
 
-            if (mouseButtonHoldTime > 3f) //Caps the strength so we don't get insanely wacky shit with forces of like, a bajillion.
+            if (mouseButtonHoldTime >
+                3f) //Caps the strength so we don't get insanely wacky shit with forces of like, a bajillion.
             {
                 mouseButtonHoldTime = 3f;
             }
@@ -73,7 +98,8 @@ public class PlayerScript : MonoBehaviour
             if (mouseButtonHeld)
             {
                 mouseButtonHeld = false;
-                playerBody.AddForce(playerToMouse.normalized * flingStrength * mouseButtonHoldTime, ForceMode2D.Impulse);
+                playerBody.AddForce(playerToMouse.normalized * flingStrength * mouseButtonHoldTime,
+                    ForceMode2D.Impulse);
                 mouseButtonHoldTime = 0f;
             }
         }
@@ -81,13 +107,41 @@ public class PlayerScript : MonoBehaviour
 
     void ApplyBlackAndWhiteEffect(bool apply)
     {
-        if (apply)
+        if (colorCoroutine != null)
         {
-            
+            StopCoroutine(colorCoroutine);
         }
-        else
-        {
 
+        colorCoroutine = StartCoroutine(AdjustSaturation(apply));
+    }
+
+    IEnumerator AdjustSaturation(bool toBlackAndWhite)
+    {
+        float targetSaturation = toBlackAndWhite ? -100 : 0;
+        float currentSaturation = colorAdjustments.saturation.value;
+
+        while (toBlackAndWhite ? currentSaturation > targetSaturation : currentSaturation < targetSaturation)
+        {
+            currentSaturation = Mathf.MoveTowards(currentSaturation, targetSaturation, Time.deltaTime * changeSpeed);
+            colorAdjustments.saturation.value = currentSaturation;
+            yield return null;
         }
+    }
+
+    void PointToMouse()
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0;
+        Vector3 direction = (mouseWorldPosition - transform.position).normalized;
+
+        pointer.transform.position = transform.position + direction * 0.25f;
+        pointer.transform.up = direction;
+    }
+
+    void ScalePointer()
+    {
+        float maxScaleY = 1.0f;
+        float scaleY = Mathf.Clamp(mouseButtonHoldTime, 0.1f, maxScaleY);
+        pointer.transform.localScale = new Vector3(pointer.transform.localScale.x, scaleY, pointer.transform.localScale.z);
     }
 }

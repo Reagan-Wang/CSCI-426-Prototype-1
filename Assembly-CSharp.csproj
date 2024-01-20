@@ -671,26 +671,89 @@
     <Reference Include="Unity.2D.IK.Runtime">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="PsdPlugin">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+    <Reference Include="Unity.2D.Common.Path.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Aseprite.Common">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Aseprite.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Extras.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Aseprite.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Aseprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="PsdPlugin">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Common.Path.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
+    <Reference Include="Unity.Burst">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
@@ -710,23 +773,11 @@
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.PixelPerfect.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Aseprite.Common">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Aseprite.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.005">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.005.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
@@ -734,17 +785,11 @@
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Extras.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -752,23 +797,14 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.SpriteShape.Runtime">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.PixelPerfect">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
@@ -776,14 +812,14 @@
     <Reference Include="Unity.2D.Common.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Aseprite.Editor">
-      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.2D.Aseprite.Editor.dll</HintPath>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>I:\GitHub\CSCI-426-Prototype-1\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
