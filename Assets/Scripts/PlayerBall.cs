@@ -8,10 +8,14 @@ using UnityEngine.Rendering.Universal;
 public class PlayerScript : MonoBehaviour
 {
     public float flingStrength = 0.01f;
+
+    //Allows access to the camera's variables
+    public GameObject CameraGet;
     Rigidbody2D playerBody;
 
     float mouseButtonHoldTime = 0.0f;
     bool mouseButtonHeld = false;
+    public float screenShakeIntensity = 0.1f;
 
     //When Player Press Down MB0
     public Volume volume;
@@ -24,6 +28,8 @@ public class PlayerScript : MonoBehaviour
     void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
+
+        CameraGet = GameObject.FindGameObjectWithTag("MainCamera");
 
         //When Player Press Down MB0
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
@@ -78,18 +84,16 @@ public class PlayerScript : MonoBehaviour
         playerToMouse = mousePos - playerPosition;
 
 
-        //Caps
         if (Input.GetMouseButton(0))
         {
 
             //Debug.Log("mouse button held down");
             mouseButtonHoldTime += Time.deltaTime;
 
-            if (mouseButtonHoldTime >
-                3f) //Caps the strength so we don't get insanely wacky shit with forces of like, a bajillion.
+            /*if (mouseButtonHoldTime > 3f) //Caps the strength so we don't get insanely wacky shit with forces of like, a bajillion.
             {
                 mouseButtonHoldTime = 3f;
-            }
+            }*/
 
             mouseButtonHeld = true;
         }
@@ -98,6 +102,11 @@ public class PlayerScript : MonoBehaviour
             if (mouseButtonHeld)
             {
                 mouseButtonHeld = false;
+
+
+                Debug.Log("Ball still exists");
+                Debug.Log("mouseButtonHoldTime: " + mouseButtonHoldTime);
+
                 playerBody.AddForce(playerToMouse.normalized * flingStrength * mouseButtonHoldTime,
                     ForceMode2D.Impulse);
                 mouseButtonHoldTime = 0f;
@@ -143,5 +152,15 @@ public class PlayerScript : MonoBehaviour
         float maxScaleY = 1.0f;
         float scaleY = Mathf.Clamp(mouseButtonHoldTime, 0.1f, maxScaleY);
         pointer.transform.localScale = new Vector3(pointer.transform.localScale.x, scaleY, pointer.transform.localScale.z);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Time.timeScale = 1.0f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            CameraGet.GetComponent<ShakeBehaviour>().shakeDuration = 0.2f * playerBody.velocity.magnitude * screenShakeIntensity;
+        }
     }
 }
