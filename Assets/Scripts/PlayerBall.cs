@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     public Volume volume;
     private ColorAdjustments colorAdjustments;
     private Coroutine colorCoroutine;
-    public float changeSpeed = 500;
+    public float changeSpeed = 500f;
     public GameObject pointer;
 
 
@@ -126,7 +126,7 @@ public class PlayerScript : MonoBehaviour
 
     IEnumerator AdjustSaturation(bool toBlackAndWhite)
     {
-        float targetSaturation = toBlackAndWhite ? -100 : 0;
+        float targetSaturation = toBlackAndWhite ? -80 : 0;
         float currentSaturation = colorAdjustments.saturation.value;
 
         while (toBlackAndWhite ? currentSaturation > targetSaturation : currentSaturation < targetSaturation)
@@ -149,7 +149,7 @@ public class PlayerScript : MonoBehaviour
 
     void ScalePointer()
     {
-        float maxScaleY = 1.0f;
+        float maxScaleY = 1.25f;
         float scaleY = Mathf.Clamp(mouseButtonHoldTime, 0.1f, maxScaleY);
         pointer.transform.localScale = new Vector3(pointer.transform.localScale.x, scaleY, pointer.transform.localScale.z);
     }
