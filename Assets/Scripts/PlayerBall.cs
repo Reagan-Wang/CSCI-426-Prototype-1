@@ -119,7 +119,6 @@ public class PlayerScript : MonoBehaviour
 
         playerToMouse = mousePos - playerPosition;
 
-
         if (Input.GetMouseButton(0))
         {
 

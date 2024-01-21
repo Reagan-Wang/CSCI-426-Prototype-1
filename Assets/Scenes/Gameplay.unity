@@ -5377,6 +5377,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9059826767871694773, guid: f60a10e1e48bc4b46a3cb24351ab2b4b, type: 3}
   m_PrefabInstance: {fileID: 246874187}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &297494869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297494872}
+  - component: {fileID: 297494871}
+  - component: {fileID: 297494870}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &297494870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297494869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &297494871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297494869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &297494872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297494869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &304493229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3590543119066857089, guid: d27dc50a28a678f44877f94275fda133, type: 3}
@@ -6944,8 +7012,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 30
-        minScalar: 10
+        scalar: 50
+        minScalar: 30
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -16745,7 +16813,7 @@ PrefabInstance:
       objectReference: {fileID: 1272602261}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: changeSpeed
-      value: 300
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: chargeSpeed
@@ -16753,7 +16821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: hueShiftSpeed
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: hueShiftAmount
@@ -16767,6 +16835,10 @@ PrefabInstance:
       propertyPath: minimumStrength
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: movementAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 324e50de8c55c9e4394da65e1ee7739b, type: 3}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: screenShakeIntensity
       value: 0.1
@@ -16838,6 +16910,14 @@ PrefabInstance:
     - target: {fileID: 6872401191346444100, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1272602261}
+    - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: screenFlash
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: wallParticleSystem
@@ -22339,3 +22419,4 @@ SceneRoots:
   - {fileID: 1272602262}
   - {fileID: 151472710}
   - {fileID: 875517407}
+  - {fileID: 297494872}

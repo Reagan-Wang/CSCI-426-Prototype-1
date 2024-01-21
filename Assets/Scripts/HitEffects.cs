@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class HitEffects : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class HitEffects : MonoBehaviour
 
     private PlayerScript playerScript;
     private Rigidbody2D playerBody;
+
+    public Volume volume;
     
     private void Awake()
     {
@@ -30,6 +34,8 @@ public class HitEffects : MonoBehaviour
             enemyParticleSystem2.transform.position = hitPoint;
             enemyParticleSystem2.Play();
             
+            StartCoroutine(AdjustPostExposure(3f, 0.1f));
+            
             StartCoroutine(HitStop());
         }
         
@@ -41,8 +47,21 @@ public class HitEffects : MonoBehaviour
             
             StartCoroutine(HitStop());
         }
-        
     }
+    
+    private IEnumerator AdjustPostExposure(float targetValue, float duration)
+    {
+        if (volume.profile.TryGet(out ColorAdjustments colorAdjustments))
+        {
+            float originalValue = 0;
+            colorAdjustments.postExposure.value = targetValue;
+
+            yield return new WaitForSeconds(duration);
+
+            colorAdjustments.postExposure.value = originalValue;
+        }
+    }
+    
     
     private IEnumerator HitStop()
     {
