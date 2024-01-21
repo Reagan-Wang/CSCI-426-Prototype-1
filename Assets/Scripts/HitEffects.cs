@@ -9,7 +9,7 @@ public class HitEffects : MonoBehaviour
 
     private PlayerScript playerScript;
     private Rigidbody2D playerBody;
-
+    
     private void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
@@ -40,7 +40,7 @@ public class HitEffects : MonoBehaviour
         }
         
     }
-
+    
     private IEnumerator HitStop()
     {
         Time.timeScale = 0f;

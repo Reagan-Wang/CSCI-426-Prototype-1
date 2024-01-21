@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
         {
             pointer.SetActive(true);
             ApplyBlackAndWhiteEffect(true);
-            Time.timeScale = 0.2f;
+            Time.timeScale = 0.1f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
             mouseButtonHoldTime = 0.0f;
         }
