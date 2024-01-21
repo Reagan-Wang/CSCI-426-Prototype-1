@@ -11,7 +11,7 @@ public class EnemyHitEffects : MonoBehaviour
     //Hit Flash
     public Color flashColor = Color.white;
     private Color originalColor;
-    public float flashDuration = 0.1f;
+    public float flashDuration = 0.05f;
     public SpriteRenderer enemySpriteRenderer;
 
     private void Awake()

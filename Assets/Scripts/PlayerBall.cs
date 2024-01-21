@@ -34,7 +34,13 @@ public class PlayerScript : MonoBehaviour
     private Coroutine colorCoroutine;
     public float changeSpeed = 500f;
     public GameObject pointer;
-
+    private float originalHue;
+    private Coroutine hueShiftCoroutine;
+    public float hueShiftAmount = 40f;
+    public float hueShiftSpeed = 200f;
+    
+    //Bullet Time
+    public AudioClip bulletTimeAudio;
 
     void Awake()
     {
@@ -42,11 +48,13 @@ public class PlayerScript : MonoBehaviour
         playerAudioSource = GetComponent<AudioSource>();
 
         CameraGet = GameObject.FindGameObjectWithTag("MainCamera");
+        
 
         //When Player Press Down MB0
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
         {
             colorAdjustments.saturation.value = 100f;
+            originalHue = colorAdjustments.hueShift.value;
         }
     }
 
@@ -58,6 +66,13 @@ public class PlayerScript : MonoBehaviour
             ApplyBlackAndWhiteEffect(true);
             Time.timeScale = 0.1f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            
+            playerAudioSource.PlayOneShot(bulletTimeAudio);
+            
+            if (hueShiftCoroutine != null)
+                StopCoroutine(hueShiftCoroutine);
+            hueShiftCoroutine = StartCoroutine(AdjustHueShift(true));
+            
             mouseButtonHoldTime = 0.0f;
         }
 
@@ -66,14 +81,23 @@ public class PlayerScript : MonoBehaviour
             PointToMouse();
             ScalePointer();
             mouseButtonHoldTime += Time.deltaTime;
+            
+            // float timeScale = Mathf.Clamp(1.0f - mouseButtonHoldTime / 3.0f, 0.1f, 1.0f);
+            // Time.timeScale = timeScale;
+            // Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
         
     if (Input.GetMouseButtonUp(0))
         {
             ApplyBlackAndWhiteEffect(false);
+            ApplyHueShift(false);
             Time.timeScale = 1.0f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
             pointer.SetActive(false);
+            
+            if (hueShiftCoroutine != null)
+                StopCoroutine(hueShiftCoroutine);
+            hueShiftCoroutine = StartCoroutine(AdjustHueShift(false));
         }
     }
 
@@ -131,16 +155,41 @@ public class PlayerScript : MonoBehaviour
 
         colorCoroutine = StartCoroutine(AdjustSaturation(apply));
     }
+    
+    void ApplyHueShift(bool apply)
+    {
+        if (apply)
+        {
+            colorAdjustments.hueShift.value = hueShiftAmount;
+        }
+        else
+        {
+            colorAdjustments.hueShift.value = originalHue;
+        }
+    }
 
     IEnumerator AdjustSaturation(bool toBlackAndWhite)
     {
-        float targetSaturation = toBlackAndWhite ? -80 : 0;
+        float targetSaturation = toBlackAndWhite ? -100 : 0;
         float currentSaturation = colorAdjustments.saturation.value;
 
         while (toBlackAndWhite ? currentSaturation > targetSaturation : currentSaturation < targetSaturation)
         {
             currentSaturation = Mathf.MoveTowards(currentSaturation, targetSaturation, Time.deltaTime * changeSpeed);
             colorAdjustments.saturation.value = currentSaturation;
+            yield return null;
+        }
+    }
+    
+    IEnumerator AdjustHueShift(bool toShift)
+    {
+        float targetHue = toShift ? hueShiftAmount : 0;
+        float currentHue = colorAdjustments.hueShift.value;
+
+        while (!Mathf.Approximately(currentHue, targetHue))
+        {
+            currentHue = Mathf.MoveTowards(currentHue, targetHue, Time.deltaTime * hueShiftSpeed);
+            colorAdjustments.hueShift.value = currentHue;
             yield return null;
         }
     }
