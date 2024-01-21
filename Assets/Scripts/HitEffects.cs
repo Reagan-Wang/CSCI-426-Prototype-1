@@ -18,6 +18,7 @@ public class HitEffects : MonoBehaviour
 
     public ParticleSystem enemyParticleSystem;
     public ParticleSystem wallParticleSystem;
+    public ParticleSystem enemyParticleSystem2;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,6 +27,8 @@ public class HitEffects : MonoBehaviour
             Vector2 hitPoint = collision.contacts[0].point;
             enemyParticleSystem.transform.position = hitPoint;
             enemyParticleSystem.Play();
+            enemyParticleSystem2.transform.position = hitPoint;
+            enemyParticleSystem2.Play();
             
             StartCoroutine(HitStop());
         }

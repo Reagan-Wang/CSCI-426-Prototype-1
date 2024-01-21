@@ -13,10 +13,14 @@ public class EnemyHitEffects : MonoBehaviour
     private Color originalColor;
     public float flashDuration = 0.05f;
     public SpriteRenderer enemySpriteRenderer;
+    
+    AudioSource playerAudioSource;
+    public AudioClip wallAudio;
 
     private void Awake()
     {
         originalColor = enemySpriteRenderer.color;
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +30,7 @@ public class EnemyHitEffects : MonoBehaviour
             Vector2 hitPoint = collision.contacts[0].point;
             wallParticleSystem.transform.position = hitPoint;
             wallParticleSystem.Play();
+            playerAudioSource.PlayOneShot(wallAudio);
         }
         
         if (collision.gameObject.CompareTag("Enemy"))

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerBall.cs" />
+    <Compile Include="Assets\Scripts\ScenesReload.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\EnemyHitEffects.cs" />
     <Compile Include="Assets\Scripts\HitEffects.cs" />
