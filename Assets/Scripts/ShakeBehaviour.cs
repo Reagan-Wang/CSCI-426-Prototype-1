@@ -11,6 +11,10 @@ public class ShakeBehaviour : MonoBehaviour
     // Desired duration of the shake effect
     public float shakeDuration = 0f;
 
+    // Maximimum magnitude of shake effect
+
+    public float shakeMaxMagnitude = 1f;
+
     // A measure of magnitude for the shake. Tweak based on your preference
     private float shakeMagnitude = 0.7f;
 
@@ -41,6 +45,11 @@ public class ShakeBehaviour : MonoBehaviour
     void Update()
     {
         shakeMagnitude = shakeDuration * 5f;
+
+        if (shakeMagnitude > shakeMaxMagnitude)
+        {
+            shakeMagnitude = shakeMaxMagnitude;
+        }
 
         if (shakeDuration > 0)
         {

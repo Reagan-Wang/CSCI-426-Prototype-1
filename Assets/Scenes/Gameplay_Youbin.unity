@@ -808,7 +808,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5705,6 +5705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeDuration: 0
+  shakeMaxMagnitude: 0.2
 --- !u!1001 &561436818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6096,43 +6097,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8110012252627255763, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
   m_PrefabInstance: {fileID: 1329762573}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &932065887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932065886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ee43a98392b8747ae213c099a90ac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flingStrength: 100
-  CameraGet: {fileID: 0}
-  screenShakeIntensity: 0.1
-  minimumStrength: 0.5
-  chargeSpeed: 2
-  hitStopCutoff: 10
-  velocityMaxVolumeCutoff: 20
-  volume: {fileID: 1272602261}
-  changeSpeed: 150
-  pointer: {fileID: 357156640}
---- !u!114 &932065891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 932065886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95db808149d0da548ba018ec12a3b0f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitStopMultiplier: 0.1
-  enemyParticleSystem: {fileID: 144386775}
-  wallParticleSystem: {fileID: 2137849004}
 --- !u!96 &932065892
 TrailRenderer:
   serializedVersion: 3
@@ -7358,7 +7322,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -11622,6 +11586,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 1272602261}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: chargeSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: minimumStrength
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: screenShakeIntensity
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4459552643249465922, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -11690,6 +11670,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: wallParticleSystem
+      value: 
+      objectReference: {fileID: 2137849004}
+    - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: enemyParticleSystem
+      value: 
+      objectReference: {fileID: 144386775}
     - target: {fileID: 7687449846485104181, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: m_Mass
       value: 2
@@ -11718,12 +11706,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 357156642}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8110012252627255763, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 932065887}
-    - targetCorrespondingSourceObject: {fileID: 8110012252627255763, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 932065891}
     - targetCorrespondingSourceObject: {fileID: 8110012252627255763, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 932065892}
@@ -12872,7 +12854,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
