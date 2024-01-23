@@ -387,6 +387,9 @@ MonoBehaviour:
   volume: {fileID: 0}
   changeSpeed: 150
   pointer: {fileID: 237647017069394009}
+  hueShiftAmount: 40
+  hueShiftSpeed: 200
+  bulletTimeAudio: {fileID: 0}
 --- !u!114 &7490516665525806358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,8 +403,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitStopMultiplier: 0.1
+  volume: {fileID: 0}
   enemyParticleSystem: {fileID: 0}
   wallParticleSystem: {fileID: 0}
+  enemyParticleSystem2: {fileID: 0}
 --- !u!96 &7448167965608679123
 TrailRenderer:
   serializedVersion: 3

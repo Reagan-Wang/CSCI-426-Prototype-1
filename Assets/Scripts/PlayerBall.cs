@@ -22,11 +22,14 @@ public class PlayerScript : MonoBehaviour
     public float minimumStrength = 0.5f;
     public float chargeSpeed = 2f;
     public float hitStopCutoff = 1f;
+    public float screenShakeMinimumTime = 0.5f;
 
     //Audio
     AudioSource playerAudioSource;
     bool m_Play;
     public float velocityMaxVolumeCutoff = 20f;
+    public AudioClip fullChargeSound;
+    bool playedFullChargeSound = false;
 
     //When Player Press Down MB0
     public Volume volume;
@@ -74,6 +77,7 @@ public class PlayerScript : MonoBehaviour
             hueShiftCoroutine = StartCoroutine(AdjustHueShift(true));
             
             mouseButtonHoldTime = 0.0f;
+            playedFullChargeSound = false;
         }
 
         if (Input.GetMouseButton(0))
@@ -85,6 +89,12 @@ public class PlayerScript : MonoBehaviour
             // float timeScale = Mathf.Clamp(1.0f - mouseButtonHoldTime / 3.0f, 0.1f, 1.0f);
             // Time.timeScale = timeScale;
             // Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+
+        if (mouseButtonHoldTime > 1.25f && !playedFullChargeSound)
+        {
+            playedFullChargeSound = true;
+            playerAudioSource.PlayOneShot(fullChargeSound);
         }
         
     if (Input.GetMouseButtonUp(0))
@@ -213,12 +223,12 @@ public class PlayerScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         playerAudioSource.volume = playerBody.velocity.magnitude / velocityMaxVolumeCutoff;
-        playerAudioSource.pitch = velocityMaxVolumeCutoff / playerBody.velocity.magnitude;
+        //playerAudioSource.pitch = velocityMaxVolumeCutoff / playerBody.velocity.magnitude;
         playerAudioSource.Play();
 
         if (playerBody.velocity.magnitude > hitStopCutoff)
         {
-            CameraGet.GetComponent<ShakeBehaviour>().shakeDuration = 0.2f * playerBody.velocity.magnitude * screenShakeIntensity;
+            CameraGet.GetComponent<ShakeBehaviour>().shakeDuration = (0.2f * playerBody.velocity.magnitude * screenShakeIntensity + screenShakeMinimumTime);
         }
     }
 }
