@@ -1,0 +1,194 @@
+{
+    "name": "DefaultControls",
+    "maps": [
+        {
+            "name": "Default Action Map",
+            "id": "20a300b0-dca5-4c18-bb0c-f28c415d0570",
+            "actions": [
+                {
+                    "name": "toggleScreenShake",
+                    "type": "Button",
+                    "id": "59cc860f-5a5f-41ef-83bd-222fbe62b7ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleAudio",
+                    "type": "Button",
+                    "id": "26c5f80e-7215-454f-b3bb-2f0f3915e9b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleScreenFlash",
+                    "type": "Button",
+                    "id": "7ff4340b-f15d-4fec-9e55-c372b93b11e7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleHitStop",
+                    "type": "Button",
+                    "id": "5a1329c9-9ba4-4b76-ad7a-bb8e5e4bd5d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleBulletTime",
+                    "type": "Button",
+                    "id": "9829a7fc-2e44-41e7-92d4-a65522253b3b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleParticles",
+                    "type": "Button",
+                    "id": "bf185403-d547-450f-9a45-d7fdb63078e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleImpactFlash",
+                    "type": "Button",
+                    "id": "b5a998cc-f0d6-47d0-9986-2e567b7dd9a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleTrails",
+                    "type": "Button",
+                    "id": "321300dc-f2e7-4c7a-96ac-889e74c93791",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "toggleForeverTrails",
+                    "type": "Button",
+                    "id": "c24de540-3015-4c20-85c5-7d23bf0c3659",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6592f0c7-e0b6-49ae-bfd8-9fcfcf86e104",
+                    "path": "<Keyboard>/#(A)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleScreenShake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8a5ae79-38ed-4647-aa37-4c29cca0a1f9",
+                    "path": "<Keyboard>/#(S)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleAudio",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f806ae0-d24a-4d20-9c2e-e8fdfe3472b3",
+                    "path": "<Keyboard>/#(D)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleScreenFlash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43befb73-5d2a-4707-9e09-4ee9dda0e669",
+                    "path": "<Keyboard>/#(F)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleHitStop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2eb89e10-9d39-4c78-b5bb-f15c68371dcc",
+                    "path": "<Keyboard>/#(G)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleBulletTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a57c0c2f-03cb-4a8e-9054-ddbc222596da",
+                    "path": "<Keyboard>/#(H)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleParticles",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "756eb2a3-2384-40a9-aef1-5644bc3a9205",
+                    "path": "<Keyboard>/#(J)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleImpactFlash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7faa8789-52a5-4b66-a104-d7c1e0d7d019",
+                    "path": "<Keyboard>/#(K)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleTrails",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8b5234f-56c2-4c9e-8d3c-fa397ffdbd4e",
+                    "path": "<Keyboard>/#(L)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "toggleForeverTrails",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

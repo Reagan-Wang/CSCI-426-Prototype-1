@@ -4,17 +4,26 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
     public float flingStrength = 0.01f;
+
+    //Text
+
+    public TextMeshProUGUI toggles;
+
+    //Player controls
+    [SerializeField]
+    private InputActionReference screenshakeToggle, audioToggle, screenFlashToggle, hitstopToggle, bulletTimeToggle, particlesToggle, impactFlashToggle, trailsToggle, foreverTrailsToggle;
 
     //Allows access to the camera's variables
     public GameObject CameraGet;
     Rigidbody2D playerBody;
 
     //Allows access to trail renderer component
-
     public TrailRenderer trailRenderer;
 
     //Makes the mouse work
@@ -43,7 +52,7 @@ public class PlayerScript : MonoBehaviour
     public bool particlesOn = true;
     public bool impactFlashOn = true;
     public bool trailsOn = true;
-    public bool foreverTrails = true;
+    public bool foreverTrails = false;
 
     //When Player Press Down MB0
     public Volume volume;
@@ -67,7 +76,6 @@ public class PlayerScript : MonoBehaviour
 
         CameraGet = GameObject.FindGameObjectWithTag("MainCamera");
 
-
         //When Player Press Down MB0
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
         {
@@ -80,6 +88,49 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (audioToggle.action.WasPressedThisFrame())
+        {
+            audioOn = !audioOn;
+        }
+
+        if (screenFlashToggle.action.WasPressedThisFrame())
+        {
+            screenFlashOn = !screenFlashOn;
+        }
+
+        if (screenshakeToggle.action.WasPressedThisFrame())
+        {
+            screenshakeOn = !screenshakeOn;
+        }
+
+        if (hitstopToggle.action.WasPressedThisFrame())
+        {
+            hitstopOn = !hitstopOn;
+        }
+
+        if (bulletTimeToggle.action.WasPressedThisFrame())
+        {
+            bulletTimeOn = !bulletTimeOn;
+        }
+
+        if (particlesToggle.action.WasPressedThisFrame())
+        {
+            particlesOn = !particlesOn;
+        }
+
+        if (impactFlashToggle.action.WasPressedThisFrame())
+        {
+            impactFlashOn = !impactFlashOn;
+        }
+
+        if (trailsToggle.action.WasPressedThisFrame()){
+            trailsOn = !trailsOn;
+        }
+
+        if (foreverTrailsToggle.action.WasPressedThisFrame())
+        {
+            foreverTrails = !foreverTrails;
+        }
 
         if (!trailsOn)
         {
@@ -98,6 +149,17 @@ public class PlayerScript : MonoBehaviour
         {
             trailRenderer.time = 1f;
         }
+
+        toggles.text = "Screenshake: " + screenshakeOn + "\n" + 
+            "Audio: " + audioOn + "\n" +
+            "Screen Flash: " + screenFlashOn + "\n" +
+            "Hitstop: " + hitstopOn + "\n" +
+            "Bullet Time: " + bulletTimeOn + "\n" +
+            "Particles: " + particlesOn + "\n" +
+            "Impact Flash: " + impactFlashOn + "\n" +
+            "Trails On: " + trailsOn + "\n" +
+            "Forever Trails: " + foreverTrails;
+
 
         if (Input.GetMouseButtonDown(0))
         {
