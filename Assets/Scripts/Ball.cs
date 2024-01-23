@@ -6,6 +6,11 @@ public class Ball : MonoBehaviour
 {
     AudioSource ballAudio;
     Rigidbody2D ballBody;
+
+    public GameObject player;
+    public PlayerScript playerScript;
+    public TrailRenderer trailRenderer;
+
     public float ballMaxVolumeVelocityCutoff = 15f;
 
     // Start is called before the first frame update
@@ -13,11 +18,31 @@ public class Ball : MonoBehaviour
     {
         ballAudio = GetComponent<AudioSource>();
         ballBody = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!playerScript.trailsOn)
+        {
+            trailRenderer.enabled = false;
+        }
+        else
+        {
+            trailRenderer.enabled = true;
+        }
+        if (playerScript.foreverTrails)
+        {
+            trailRenderer.time = float.PositiveInfinity;
+        }
+        else
+        {
+            trailRenderer.time = 1f;
+        }
         
     }
 
@@ -27,7 +52,10 @@ public class Ball : MonoBehaviour
         {
             ballAudio.volume = ballBody.velocity.magnitude / ballMaxVolumeVelocityCutoff;
             ballAudio.pitch = ballMaxVolumeVelocityCutoff / ballBody.velocity.magnitude;
-            ballAudio.Play();
+            if (playerScript.audioOn)
+            {
+                ballAudio.Play();
+            }
         }
     }
 }

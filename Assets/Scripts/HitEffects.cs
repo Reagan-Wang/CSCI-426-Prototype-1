@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class HitEffects : MonoBehaviour
 {
     public float hitStopMultiplier = 0.1f;
-    private float hitStopDuration;
+    public float hitStopDuration = 0.5f ;
 
     private PlayerScript playerScript;
     private Rigidbody2D playerBody;
@@ -29,23 +29,35 @@ public class HitEffects : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && playerBody.velocity.magnitude > playerScript.hitStopCutoff)
         {
             Vector2 hitPoint = collision.contacts[0].point;
-            enemyParticleSystem.transform.position = hitPoint;
-            enemyParticleSystem.Play();
-            enemyParticleSystem2.transform.position = hitPoint;
-            enemyParticleSystem2.Play();
-            
-            StartCoroutine(AdjustPostExposure(3f, 0.1f));
-            
-            StartCoroutine(HitStop());
+
+            if (playerScript.particlesOn)
+            {
+                enemyParticleSystem.transform.position = hitPoint;
+                enemyParticleSystem.Play();
+                enemyParticleSystem2.transform.position = hitPoint;
+                enemyParticleSystem2.Play();
+            }
+
+            if (playerScript.hitstopOn)
+            {
+                StartCoroutine(AdjustPostExposure(3f, 0.1f));
+                StartCoroutine(HitStop());
+            }
         }
-        
+
         if (collision.gameObject.CompareTag("Wall"))
         {
             Vector2 hitPoint = collision.contacts[0].point;
-            wallParticleSystem.transform.position = hitPoint;
-            wallParticleSystem.Play();
-            
-            StartCoroutine(HitStop());
+            if (playerScript.particlesOn)
+            {
+                wallParticleSystem.transform.position = hitPoint;
+                wallParticleSystem.Play();
+            }
+
+            if (playerScript.hitstopOn && playerBody.velocity.magnitude > playerScript.hitStopCutoff)
+            {
+                StartCoroutine(HitStop());
+            }
         }
     }
     

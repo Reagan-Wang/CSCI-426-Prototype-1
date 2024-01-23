@@ -13,6 +13,10 @@ public class PlayerScript : MonoBehaviour
     public GameObject CameraGet;
     Rigidbody2D playerBody;
 
+    //Allows access to trail renderer component
+
+    public TrailRenderer trailRenderer;
+
     //Makes the mouse work
     float mouseButtonHoldTime = 0.0f;
     bool mouseButtonHeld = false;
@@ -28,8 +32,18 @@ public class PlayerScript : MonoBehaviour
     AudioSource playerAudioSource;
     bool m_Play;
     public float velocityMaxVolumeCutoff = 20f;
-    public AudioClip fullChargeSound;
-    bool playedFullChargeSound = false;
+
+    //Toggle gamefeel elements
+
+    public bool screenshakeOn = true;
+    public bool audioOn = true;
+    public bool screenFlashOn = true;
+    public bool hitstopOn = true;
+    public bool bulletTimeOn = true;
+    public bool particlesOn = true;
+    public bool impactFlashOn = true;
+    public bool trailsOn = true;
+    public bool foreverTrails = true;
 
     //When Player Press Down MB0
     public Volume volume;
@@ -49,35 +63,65 @@ public class PlayerScript : MonoBehaviour
     {
         playerBody = GetComponent<Rigidbody2D>();
         playerAudioSource = GetComponent<AudioSource>();
+        trailRenderer = GetComponent<TrailRenderer>();
 
         CameraGet = GameObject.FindGameObjectWithTag("MainCamera");
-        
+
 
         //When Player Press Down MB0
         if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
         {
+            if (bulletTimeOn) {
             colorAdjustments.saturation.value = 100f;
             originalHue = colorAdjustments.hueShift.value;
+            }
         }
     }
 
     void Update()
     {
+
+        if (!trailsOn)
+        {
+            trailRenderer.enabled = false;
+        }
+        else
+        {
+            trailRenderer.enabled = true;
+        }
+
+        if (foreverTrails)
+        {
+            trailRenderer.time = float.PositiveInfinity;
+        }
+        else
+        {
+            trailRenderer.time = 1f;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             pointer.SetActive(true);
-            ApplyBlackAndWhiteEffect(true);
-            Time.timeScale = 0.1f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-            
-            playerAudioSource.PlayOneShot(bulletTimeAudio);
-            
-            if (hueShiftCoroutine != null)
-                StopCoroutine(hueShiftCoroutine);
-            hueShiftCoroutine = StartCoroutine(AdjustHueShift(true));
+            if (bulletTimeOn)
+            {
+                ApplyBlackAndWhiteEffect(true);
+                Time.timeScale = 0.1f;
+                Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            }
+
+            if (audioOn)
+            {
+                playerAudioSource.PlayOneShot(bulletTimeAudio);
+            }
+
+            if (bulletTimeOn)
+            {
+                if (hueShiftCoroutine != null)
+                    StopCoroutine(hueShiftCoroutine);
+                hueShiftCoroutine = StartCoroutine(AdjustHueShift(true));
+            }
             
             mouseButtonHoldTime = 0.0f;
-            playedFullChargeSound = false;
         }
 
         if (Input.GetMouseButton(0))
@@ -89,12 +133,6 @@ public class PlayerScript : MonoBehaviour
             // float timeScale = Mathf.Clamp(1.0f - mouseButtonHoldTime / 3.0f, 0.1f, 1.0f);
             // Time.timeScale = timeScale;
             // Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        }
-
-        if (mouseButtonHoldTime > 1.25f && !playedFullChargeSound)
-        {
-            playedFullChargeSound = true;
-            playerAudioSource.PlayOneShot(fullChargeSound);
         }
         
     if (Input.GetMouseButtonUp(0))
@@ -224,9 +262,13 @@ public class PlayerScript : MonoBehaviour
     {
         playerAudioSource.volume = playerBody.velocity.magnitude / velocityMaxVolumeCutoff;
         //playerAudioSource.pitch = velocityMaxVolumeCutoff / playerBody.velocity.magnitude;
-        playerAudioSource.Play();
 
-        if (playerBody.velocity.magnitude > hitStopCutoff)
+        if (audioOn)
+        {
+            playerAudioSource.Play();
+        }
+
+        if (playerBody.velocity.magnitude > hitStopCutoff && screenshakeOn)
         {
             CameraGet.GetComponent<ShakeBehaviour>().shakeDuration = (0.2f * playerBody.velocity.magnitude * screenShakeIntensity + screenShakeMinimumTime);
         }

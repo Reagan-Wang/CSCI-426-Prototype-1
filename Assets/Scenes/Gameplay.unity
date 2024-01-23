@@ -16812,6 +16812,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1272602261}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: audioOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: hitstopOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: changeSpeed
       value: 500
       objectReference: {fileID: 0}
@@ -16820,8 +16828,28 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: particlesOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: bulletTimeOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: hueShiftSpeed
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: impactFlashOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: screenFlashOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: screenshakeOn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: hueShiftAmount
@@ -16831,6 +16859,10 @@ PrefabInstance:
       propertyPath: bulletTimeAudio
       value: 
       objectReference: {fileID: 8300000, guid: 620c0a76d037a634c845bcaa17d2e240, type: 3}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: fullChargeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7768c2abee084004ba314b368bb82b4d, type: 3}
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: minimumStrength
       value: 0.5
@@ -16842,6 +16874,10 @@ PrefabInstance:
     - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: screenShakeIntensity
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 800669033301002261, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: screenShakeMinimumTime
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4459552643249465922, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: m_Color.b
@@ -16918,6 +16954,10 @@ PrefabInstance:
     - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: screenFlash
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
+      propertyPath: hitStopDuration
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7490516665525806358, guid: 5b137b6aed94c3a4ebe4aefb3fbd90d7, type: 3}
       propertyPath: wallParticleSystem
